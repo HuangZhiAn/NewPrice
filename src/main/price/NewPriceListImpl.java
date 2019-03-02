@@ -1,4 +1,4 @@
-package main.price;
+package price;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package main.price;
+package price;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
