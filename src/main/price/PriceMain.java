@@ -25,24 +25,24 @@ public class PriceMain {
                     ,dateFormat.parse("2018-02-15"),dateFormat.parse("2018-02-01"),600D);
             p6 = new Price(6,dateFormat.parse("2018-02-15")
                     ,dateFormat.parse("2018-02-25"),dateFormat.parse("2018-02-01"),700D);
-
-            System.out.println("普通集合实现");
             prices.add(p1);
             prices.add(p2);
             prices.add(p3);
             prices.add(p4);
             prices.add(p5);
             prices.add(p6);
-            newPriceList2.addPrices(prices);
-            //打印
-            newPriceList2.print(newPriceList2.getResult());
-
-            System.out.println("动态规划实现");
-            newPriceList.addPrices(prices);
-            //直接打印
-            newPriceList.print(newPriceList.getResult());
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        System.out.println("普通集合实现");
+        newPriceList2.addPrices(prices);
+        //打印
+        newPriceList2.print(newPriceList2.getResult());
+
+        System.out.println("动态规划实现");
+        newPriceList.addPrices(prices);
+        //打印
+        newPriceList.print(newPriceList.getResult());
+
     }
 }

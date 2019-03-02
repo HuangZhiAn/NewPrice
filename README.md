@@ -1,6 +1,6 @@
 # NewPrice
 
-价格更新。根据更新记录，得出整个时间线上，所有时间的最新价格 
+价格更新。根据更新记录，得出整个时间线上，所有时间的最新价格  
 
 # Example  
 
@@ -32,4 +32,5 @@
 每个有更新记录的时间区间都能找到最新的价格  
 
 # Run
-运行 PriceMain.java 中的 main 方法
+运行 PriceMain.java 中的 main 方法  
+两种实现，NewPriceImplSort.java 用于已有集合，NewPriceListImpl.java 用于经常需要动态添加元素的集合
