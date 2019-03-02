@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * 动态规划实现
  */
+@SuppressWarnings("Duplicates")
 public class NewPriceListImpl extends NewPriceList {
 
     @Override
@@ -31,7 +32,7 @@ public class NewPriceListImpl extends NewPriceList {
         } else {
             //找出涉及更新的区间
             int head = -1, tail = -1;
-            for (Price p:result ) {
+            for (Price p : result) {
                 //startDate所在区间
                 if (p.getEndDate().getTime() >= price.getStartDate().getTime()
                         && price.getStartDate().getTime() >= p.getStartDate().getTime()) {
@@ -57,13 +58,7 @@ public class NewPriceListImpl extends NewPriceList {
                     tailPrice = (Price) old.clone();
                     tailPrice.setStartDate(price.getEndDate());
 
-                    if (tailPrice.getStartDate().getTime() < tailPrice.getEndDate().getTime()) {
-                        result.add(tail, tailPrice);
-                    }
-                    if (headPrice.getStartDate().getTime() < headPrice.getEndDate().getTime()) {
-                        result.add(tail, headPrice);
-                    }
-                    result.remove(old);
+                    replace(tail, headPrice, tailPrice, old);
                     tail = tail - 1;
                 }
             } else {
@@ -83,13 +78,7 @@ public class NewPriceListImpl extends NewPriceList {
                     tailPrice = (Price) price.clone();
                     tailPrice.setEndDate(old.getEndDate());
 
-                    if (tailPrice.getStartDate().getTime() < tailPrice.getEndDate().getTime()) {
-                        result.add(head, tailPrice);
-                    }
-                    if (headPrice.getStartDate().getTime() < headPrice.getEndDate().getTime()) {
-                        result.add(head, headPrice);
-                    }
-                    result.remove(old);
+                    replace(head, headPrice, tailPrice, old);
                     head = head + 2;
                     tail++;
                 }
@@ -173,4 +162,14 @@ public class NewPriceListImpl extends NewPriceList {
         }
     }
 
+    //新区间替换旧区间
+    private void replace(int tail, Price headPrice, Price tailPrice, Price old) {
+        if (tailPrice.getStartDate().getTime() < tailPrice.getEndDate().getTime()) {
+            result.add(tail, tailPrice);
+        }
+        if (headPrice.getStartDate().getTime() < headPrice.getEndDate().getTime()) {
+            result.add(tail, headPrice);
+        }
+        result.remove(old);
+    }
 }

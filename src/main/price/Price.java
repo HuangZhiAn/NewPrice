@@ -11,7 +11,8 @@ public class Price {
     private Date update;
     private Double price;
 
-    public Price() {}
+    public Price() {
+    }
 
     public Price(Integer number, Date startDate, Date endDate, Date update, Double price) {
         this.number = number;
@@ -63,12 +64,12 @@ public class Price {
 
     @Override
     protected Object clone() {
-        return new Price(number,startDate,endDate,update,price);
+        return new Price(number, startDate, endDate, update, price);
     }
 
     @Override
     public String toString() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return dateFormat.format(startDate)+"\t"+dateFormat.format(endDate)+"\t"+dateFormat.format(update)+"\t"+price;
+        return dateFormat.format(startDate) + "\t" + dateFormat.format(endDate) + "\t" + dateFormat.format(update) + "\t" + price;
     }
 }

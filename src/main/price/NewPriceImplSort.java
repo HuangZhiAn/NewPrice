@@ -2,10 +2,11 @@ package price;
 
 import java.util.*;
 
+@SuppressWarnings("Duplicates")
 public class NewPriceImplSort extends NewPriceList {
     @Override
     public void addPrice(Price price) {
-        if(price.getStartDate().getTime()>=price.getEndDate().getTime()){
+        if (price.getStartDate().getTime() >= price.getEndDate().getTime()) {
             System.out.println("添加的新价格时间区间不对");
             return;
         }
@@ -15,7 +16,7 @@ public class NewPriceImplSort extends NewPriceList {
 
     @Override
     public void addPrices(Collection<Price> c) {
-        for(Price p:c){
+        for (Price p : c) {
             addPrice(p);
         }
         analyse();
@@ -54,6 +55,7 @@ public class NewPriceImplSort extends NewPriceList {
         //合并日期相邻，价格相同区间
         mergeSamePrice();
     }
+
     //按更新时间排序
     private void sortSrcPrice() {
         srcPrice.sort(Comparator.comparingLong((Price a) -> a.getUpdate().getTime()));
